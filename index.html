@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Northern Railway - Income Tax Declaration Form FY 2025-26</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 20px;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            font-size: 28px;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .header p {
+            font-size: 16px;
+            opacity: 0.9;
+        }
+        
+        .form-content {
+            padding: 40px;
+        }
+        
+        .declaration-box {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 20px;
+            margin-bottom: 30px;
+            border-radius: 6px;
+        }
+        
+        .declaration-box p {
+            font-weight: 600;
+            color: #856404;
+            margin-bottom: 10px;
+        }
+        
+        .note-box {
+            background: #d1ecf1;
+            border-left: 4px solid #17a2b8;
+            padding: 15px;
+            margin-top: 30px;
+            border-radius: 6px;
+        }
+        
+        .note-box strong {
+            color: #0c5460;
+        }
+        
+        .note-box ul {
+            margin-left: 20px;
+            margin-top: 10px;
+            color: #0c5460;
+        }
+        
+        .form-section {
+            margin-bottom: 35px;
+            padding: 25px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            border-left: 4px solid #667eea;
+        }
+        
+        .form-section h2 {
+            color: #1e3c72;
+            font-size: 18px;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #e0e0e0;
+        }
+        
+        .section-badge {
+            display: inline-block;
+            background: #667eea;
+            color: white;
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-size: 12px;
+            margin-left: 10px;
+            font-weight: normal;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        label {
+            display: block;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 8px;
+            font-size: 14px;
+        }
+        
+        input[type="text"],
+        input[type="number"],
+        input[type="email"],
+        input[type="tel"],
+        textarea {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e0e0e0;
+            border-radius: 6px;
+            font-size: 14px;
+            transition: all 0.3s;
+        }
+        
+        input:focus,
+        textarea:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+        
+        .radio-group {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .radio-option {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        input[type="radio"] {
+            width: 18px;
+            height: 18px;
+            cursor: pointer;
+        }
+        
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+        }
+        
+        .grid-5 {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 15px;
+        }
+        
+        .policy-input-group {
+            background: white;
+            padding: 15px;
+            border-radius: 6px;
+            margin-bottom: 10px;
+        }
+        
+        .submit-btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 15px 40px;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            width: 100%;
+            transition: all 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(102, 126, 234, 0.4);
+        }
+        
+        .submit-btn:active {
+            transform: translateY(0);
+        }
+        
+        .success-message {
+            display: none;
+            background: #4caf50;
+            color: white;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+            margin-bottom: 20px;
+            animation: slideIn 0.5s;
+        }
+        
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .required {
+            color: #e74c3c;
+        }
+        
+        .note {
+            font-size: 12px;
+            color: #666;
+            font-style: italic;
+            margin-top: 5px;
+        }
+        
+        @media (max-width: 768px) {
+            .form-content {
+                padding: 20px;
+            }
+            
+            .grid-2,
+            .grid-3,
+            .grid-5 {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Northern Railway</h1>
+            <p>Income Tax Declaration Form</p>
+            <p>(For Financial Year 2025-26 and Assessment Year 2026-27)</p>
+        </div>
+        
+        <div class="form-content">
+            <div id="successMessage" class="success-message">
+                ✓ Form submitted successfully! Your declaration has been recorded.
+            </div>
+            
+            <div class="declaration-box">
+                <p>☑ I hereby declare that I want to opt for OLD Scheme/NEW Scheme of Income Tax for the Financial Year 2025-2026. *</p>
+                <p style="font-size: 13px; font-weight: normal; margin-top: 10px;">If the option opted is Old Scheme, then kindly provide the following information along with relevant document proof wherever applicable, else avoid.</p>
+            </div>
+            
+            <form id="taxForm">
+                <!-- Employee Details -->
+                <div class="form-section">
+                    <h2>Employee Details <span class="required">*</span></h2>
+                    <div class="form-group">
+                        <label for="empName">Name (Sh./Smt.) <span class="required">*</span></label>
+                        <input type="text" id="empName" name="empName" required>
+                    </div>
+                    <div class="grid-2">
+                        <div class="form-group">
+                            <label for="designation">Designation <span class="required">*</span></label>
+                            <input type="text" id="designation" name="designation" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="pfNumber">PF/NPS Number <span class="required">*</span></label>
+                            <input type="text" id="pfNumber" name="pfNumber" required>
+                        </div>
+                    </div>
+                    <div class="grid-2">
+                        <div class="form-group">
+                            <label for="section">Section <span class="required">*</span></label>
+                            <input type="text" id="section" name="section" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="contactNo">Contact Number <span class="required">*</span></label>
+                            <input type="tel" id="contactNo" name="contactNo" required>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tax Scheme Selection -->
+                <div class="form-section">
+                    <h2>Tax Scheme Selection <span class="required">*</span></h2>
+                    <div class="radio-group">
+                        <div class="radio-option">
+                            <input type="radio" id="oldScheme" name="taxScheme" value="Old Scheme" required>
+                            <label for="oldScheme" style="margin-bottom: 0;">Old Scheme</label>
+                        </div>
+                        <div class="radio-option">
+                            <input type="radio" id="newScheme" name="taxScheme" value="New Scheme">
+                            <label for="newScheme" style="margin-bottom: 0;">New Scheme</label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Residence Status -->
+                <div class="form-section">
+                    <h2>1. Residence Status <span class="required">*</span></h2>
+                    <div class="radio-group">
+                        <div class="radio-option">
+                            <input type="radio" id="rented" name="residenceStatus" value="Rented" required>
+                            <label for="rented" style="margin-bottom: 0;">Rented</label>
+                        </div>
+                        <div class="radio-option">
+                            <input type="radio" id="owned" name="residenceStatus" value="Owned">
+                            <label for="owned" style="margin-bottom: 0;">Owned</label>
+                        </div>
+                        <div class="radio-option">
+                            <input type="radio" id="parentsHouse" name="residenceStatus" value="Parents House">
+                            <label for="parentsHouse" style="margin-bottom: 0;">Parents House</label>
+                        </div>
+                        <div class="radio-option">
+                            <input type="radio" id="govtAccom" name="residenceStatus" value="Govt. Accommodation">
+                            <label for="govtAccom" style="margin-bottom: 0;">Govt. Accommodation</label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Rent Details -->
+                <div class="form-section" id="rentSection" style="display: none;">
+                    <h2>2. Monthly/Quarterly/Half-Yearly/Yearly Rent (If applicable)</h2>
+                    <div class="form-group">
+                        <label for="rentAmount">Rent Amount (₹)</label>
+                        <input type="number" id="rentAmount" name="rentAmount" min="0">
+                        <p class="note">Rent Receipts must be enclosed if Rent exceeds ₹1 Lac annually along with Rent Agreement. PAN of Owner/Landlord mandatory if rent exceeds ₹1 Lac per annum</p>
+                    </div>
+                </div>
+
+                <!-- Medi-Claim Policy -->
+                <div class="form-section">
+                    <h2>3. Medi-Claim Policy</h2>
+                    <div class="grid-2">
+                        <div class="form-group">
+                            <label for="mediClaimSelf">Self (₹)</label>
+                            <input type="number" id="mediClaimSelf" name="mediClaimSelf" min="0">
+                        </div>
+                        <div class="form-group">
+                            <label for="mediClaimParents">Parents (₹)</label>
+                            <input type="number" id="mediClaimParents" name="mediClaimParents" min="0">
+                        </div>
+                    </div>
+                    <p class="note">(Document Mandatory)</p>
+                </div>
+
+                <!-- Physical Handicapped Rebate -->
+                <div class="form-section">
+                    <h2>4. Physical Handicapped Rebate</h2>
+                    <div class="grid-2">
+                        <div class="form-group">
+                            <label for="handicapPercentage">Percentage (%)</label>
+                            <input type="number" id="handicapPercentage" name="handicapPercentage" min="0" max="100">
+                        </div>
+                        <div class="form-group">
+                            <label for="handicapRebate">Rebate (₹)</label>
+                            <input type="number" id="handicapRebate" name="handicapRebate" min="0">
+                        </div>
+                    </div>
+                    <p class="note">(Disability Certificate required)</p>
+                </div>
+
+                <!-- Bank Housing Loan -->
+                <div class="form-section">
+                    <h2>5. Bank Housing Loan (FY 2025-26)</h2>
+                    <div class="form-group">
+                        <label for="loanPrincipal">Principal (Yearly) (₹)</label>
+                        <input type="number" id="loanPrincipal" name="loanPrincipal" min="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="loanInterest">Interest (Yearly) (₹)</label>
+                        <input type="number" id="loanInterest" name="loanInterest" min="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="bankPAN">Bank PAN</label>
+                        <input type="text" id="bankPAN" name="bankPAN">
+                    </div>
+                    <p class="note">(Tentative Bank Statement along with PAN No. mandatory otherwise not being considered)</p>
+                </div>
+
+                <!-- PPF Contribution -->
+                <div class="form-section">
+                    <h2>6. Public Provident Fund (PPF) Contribution (FY 2025-26)</h2>
+                    <div class="form-group">
+                        <label for="ppfAmount">Amount (₹)</label>
+                        <input type="number" id="ppfAmount" name="ppfAmount" min="0">
+                    </div>
+                    <p class="note">(Document Mandatory)</p>
+                </div>
+
+                <!-- LIC Payments -->
+                <div class="form-section">
+                    <h2>7. LIC Payments made during FY 2025-26 <span class="section-badge">Section 80C</span> <span class="section-badge">Yearly</span></h2>
+                    <div class="policy-input-group">
+                        <label>Policy Numbers & Amounts</label>
+                        <div class="grid-5">
+                            <div class="form-group">
+                                <input type="text" id="licPolicy1" name="licPolicy1" placeholder="Policy 1 No.">
+                                <input type="number" id="licAmount1" name="licAmount1" min="0" placeholder="₹" style="margin-top: 8px;">
+                            </div>
+                            <div class="form-group">
+                                <input type="text" id="licPolicy2" name="licPolicy2" placeholder="Policy 2 No.">
+                                <input type="number" id="licAmount2" name="licAmount2" min="0" placeholder="₹" style="margin-top: 8px;">
+                            </div>
+                            <div class="form-group">
+                                <input type="text" id="licPolicy3" name="licPolicy3" placeholder="Policy 3 No.">
+                                <input type="number" id="licAmount3" name="licAmount3" min="0" placeholder="₹" style="margin-top: 8px;">
+                            </div>
+                            <div class="form-group">
+                                <input type="text" id="licPolicy4" name="licPolicy4" placeholder="Policy 4 No.">
+                                <input type="number" id="licAmount4" name="licAmount4" min="0" placeholder="₹" style="margin-top: 8px;">
+                            </div>
+                            <div class="form-group">
+                                <input type="text" id="licPolicy5" name="licPolicy5" placeholder="Policy 5 No.">
+                                <input type="number" id="licAmount5" name="licAmount5" min="0" placeholder="₹" style="margin-top: 8px;">
+                            </div>
+                        </div>
+                    </div>
+                    <p class="note">(Document Mandatory)</p>
+                </div>
+
+                <!-- Tuition Fee -->
+                <div class="form-section">
+                    <h2>8. Tuition Fee Paid in School FY 2025-26 (Yearly) <span class="section-badge">Section 80C</span></h2>
+                    <p class="note" style="margin-bottom: 15px;">(Only Tuition Fee Component)</p>
+                    <div class="policy-input-group">
+                        <div class="grid-2">
+                            <div class="form-group">
+                                <label for="child1Name">Name of 1st Child</label>
+                                <input type="text" id="child1Name" name="child1Name">
+                            </div>
+                            <div class="form-group">
+                                <label for="child1Fee">Fee (₹)</label>
+                                <input type="number" id="child1Fee" name="child1Fee" min="0">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="policy-input-group">
+                        <div class="grid-2">
+                            <div class="form-group">
+                                <label for="child2Name">Name of 2nd Child</label>
+                                <input type="text" id="child2Name" name="child2Name">
+                            </div>
+                            <div class="form-group">
+                                <label for="child2Fee">Fee (₹)</label>
+                                <input type="number" id="child2Fee" name="child2Fee" min="0">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="policy-input-group">
+                        <div class="grid-2">
+                            <div class="form-group">
+                                <label for="child3Name">Name of 3rd Child</label>
+                                <input type="text" id="child3Name" name="child3Name">
+                            </div>
+                            <div class="form-group">
+                                <label for="child3Fee">Fee (₹)</label>
+                                <input type="number" id="child3Fee" name="child3Fee" min="0">
+                            </div>
+                        </div>
+                    </div>
+                    <p class="note">(Document Mandatory)</p>
+                </div>
+
+                <!-- Other Savings/Investments -->
+                <div class="form-section">
+                    <h2>9. Any other Savings/Investments made in FY 2025-26 <span class="section-badge">Section 80C</span> <span class="section-badge">Yearly</span></h2>
+                    <div class="form-group">
+                        <label for="otherSavings1">Savings/Investment 1 (₹)</label>
+                        <input type="number" id="otherSavings1" name="otherSavings1" min="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="otherSavings2">Savings/Investment 2 (₹)</label>
+                        <input type="number" id="otherSavings2" name="otherSavings2" min="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="otherSavings3">Savings/Investment 3 (₹)</label>
+                        <input type="number" id="otherSavings3" name="otherSavings3" min="0">
+                    </div>
+                    <p class="note">(Document Mandatory)</p>
+                </div>
+
+                <!-- Other Income -->
+                <div class="form-section">
+                    <h2>10. Any Other Income reported during FY 2025-26</h2>
+                    <div class="form-group">
+                        <label for="otherIncome">Amount (₹)</label>
+                        <input type="number" id="otherIncome" name="otherIncome" min="0">
+                    </div>
+                </div>
+
+                <!-- NPS Savings -->
+                <div class="form-section">
+                    <h2>11. NPS Savings (Other than Salary/Mandatory Deduction) (FY 2025-26)</h2>
+                    <div class="form-group">
+                        <label for="npsSavings">Amount (₹)</label>
+                        <input type="number" id="npsSavings" name="npsSavings" min="0">
+                    </div>
+                    <p class="note">(Contribution made other than Mandatory Deduction from Regular Salary - Document Mandatory)</p>
+                </div>
+
+                <!-- Important Note -->
+                <div class="note-box">
+                    <strong>Note:</strong>
+                    <ul>
+                        <li>Documentary Proof wherever required must be submitted along with the declaration form.</li>
+                        <li><strong>Any Modification/Correction will be considered till 31st December, 2025 only.</strong></li>
+                    </ul>
+                </div>
+
+                <!-- Submit Button -->
+                <button type="submit" class="submit-btn">Submit Declaration</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // Show/hide rent section based on residence status
+        document.querySelectorAll('input[name="residenceStatus"]').forEach(radio => {
+            radio.addEventListener('change', function() {
+                const rentSection = document.getElementById('rentSection');
+                if (this.value === 'Rented') {
+                    rentSection.style.display = 'block';
+                } else {
+                    rentSection.style.display = 'none';
+                    document.getElementById('rentAmount').value = '';
+                }
+            });
+        });
+
+        // Form submission
+        document.getElementById('taxForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const formData = new FormData(this);
+            const data = {};
+            
+            // Convert FormData to object
+            for (let [key, value] of formData.entries()) {
+                data[key] = value;
+            }
+            
+            // Add timestamp and place
+            data.timestamp = new Date().toISOString();
+            data.place = 'DELHI';
+            
+            try {
+                // Replace 'YOUR_SCRIPT_URL' with your actual Google Apps Script Web App URL
+                const SCRIPT_URL = 'YOUR_SCRIPT_URL';
+                
+                const response = await fetch(SCRIPT_URL, {
+                    method: 'POST',
+                    mode: 'no-cors',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(data)
+                });
+                
+                // Show success message
+                document.getElementById('successMessage').style.display = 'block';
+                this.reset();
+                
+                // Scroll to top
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+                
+                // Hide success message after 5 seconds
+                setTimeout(() => {
+                    document.getElementById('successMessage').style.display = 'none';
+                }, 5000);
+                
+            } catch (error) {
+                alert('Error submitting form. Please try again.');
+                console.error('Error:', error);
+            }
+        });
+    </script>
+</body>
+</html>
